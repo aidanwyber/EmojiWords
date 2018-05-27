@@ -10,7 +10,7 @@ List of 354986 English words from: https://github.com/dwyl/english-words
 import get_emoji
 
 
-lang = ['english', 'dutch'][0]
+lang = ['english', 'dutch'][1]
 
 #
 # parsing word list (dict)
@@ -137,7 +137,7 @@ def write_emoji_file(emoji_list, file_name, ext='txt'):
     # modular for different sortings
     path = file_name + '_' + lang + '.' + ext
     output = open(path, 'wb')
-    for x in results:
+    for x in emoji_list:
         line = x[0] + ',' + ' '.join(x[1][0]) + ',' + ''.join(x[1][1]) + u'\n'
         output.write(line.encode('utf-8'))
     output.close()
