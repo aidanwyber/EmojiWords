@@ -10,9 +10,7 @@ List of 354986 English words from: https://github.com/dwyl/english-words
 import get_emoji
 
 
-lang = ['english', 'dutch'][1]
-
-outfilename = 'emoji_words_{}.csv'.format(lang)
+lang = ['english', 'dutch'][0]
 
 #
 # parsing word list (dict)
@@ -135,17 +133,23 @@ print()
 print('Found {} words that can be written in emoji.'.format(len(results)))
 
 
+def write_emoji_file(emoji_list, file_name, ext='txt'):
+    # modular for different sortings
+    path = file_name + '_' + lang + '.' + ext
+    output = open(path, 'wb')
+    for x in results:
+        line = x[0] + ',' + ' '.join(x[1][0]) + ',' + ''.join(x[1][1]) + u'\n'
+        output.write(line.encode('utf-8'))
+    output.close()
+
+
 #
 # saving to file
 #
 
 print('Writing to file...')
 
-output = open(outfilename, 'wb')
-for x in results:
-    line = x[0] + ',' + ' '.join(x[1][0]) + ',' + ''.join(x[1][1]) + u'\n'
-    output.write(line.encode('utf-8'))
-output.close()
+write_emoji_file(results, 'emoji_words_alphabetical', ext='csv')
 
 print('Written.')
 print()
@@ -200,7 +204,12 @@ while not sortd:
 for i in range(len(results_sorted_word_len[:n])):
     x = results_sorted_word_len[i]
     print('{}. {} letters: {} \t({})'.format(i + 1, len(x[0]), x[0], ' '.join(x[1][0])))
-        
+
+# write this list to a file as well
+print('\nWriting word length sorted file...')
+write_emoji_file(results_sorted_word_len, 'emoji_words_word_length', ext='csv')
+print('Written.')
+
 
 ##print('Top {} number of characters:'.format(n))
 ### sort on char count
@@ -218,6 +227,10 @@ for i in range(len(results_sorted_word_len[:n])):
 ##for i in range(len(results_sorted_char_count[:n])):
 ##    x = results_sorted_char_count[i]
 ##    print('{}. {} chars: {} \t({})'.format(i + 1, len(x[1][0]), x[0], ' '.join(x[1][0])))
-     
+
+
+
+print('\nDone.\n')
+
 
 
