@@ -10,7 +10,7 @@ List of 354986 English words from: https://github.com/dwyl/english-words
 import get_emoji
 
 
-lang = ['english', 'dutch'][1]
+lang = ['english', 'dutch'][0]
 
 #
 # parsing word list (dict)
