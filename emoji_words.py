@@ -1,3 +1,5 @@
+#python36
+
 '''
 Find words that can be written with emoji only.
 List of 354986 English words from: https://github.com/dwyl/english-words
@@ -5,7 +7,7 @@ List of 354986 English words from: https://github.com/dwyl/english-words
 
 import re
 
-extended = True
+extended = False
 lang = ['english', 'dutch'][1]
 
 outfilename = 'emoji_{}_words_{}.txt'.format(lang, 'extended' if extended else 'blocks_only')
