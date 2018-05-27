@@ -12,8 +12,10 @@ def init_emoji_data():
     f.close()
     
     emoji_chars = emoji_chars_data.split('\n')
-    emoji_phones = 'tm wc i a b ab cl o sos vs id m p abc abcd ng ok up cool new free end back on top soon s'.split(' ')
+    emoji_phones = 'tm wc i a b ab cl o sos vs id m p abc abcd ng ok up cool new free end back on top soon s atm c r'.split(' ')
 
+    if len(emoji_phones) != len(emoji_chars):
+        raise Exception('emoji_phones variable and emoji_chars file do not match in length ({} vs {}).'.format(len(emoji_phones), len(emoji_chars)))
 
 
 def sort_chars():
@@ -45,7 +47,7 @@ def main():
         print(emoji_chars)
     except:
         print('Can\'t print emoji\'s in this window.')
-    print(emoji_phones)
+    print('emoji_phones: ' + ', '.join(emoji_phones))
 
 def get_emoji():
     main()
